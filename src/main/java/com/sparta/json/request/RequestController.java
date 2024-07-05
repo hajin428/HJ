@@ -11,10 +11,8 @@ public class RequestController {
         return "hello-request-form";
     }
 
-    // [Request sample]
-    //
+    // [Request sample
     // GET http://localhost:8080/hello/request/star/Robbie/age/95
-    //
     @GetMapping("/star/{name}/age/{age}")
     @ResponseBody
 
