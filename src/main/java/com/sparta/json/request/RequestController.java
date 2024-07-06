@@ -54,7 +54,37 @@ public class RequestController {
         return String.format("Hello, @RequestParam.<br> name = %s, age = %d", name, age);
     }
 
+    // [Request sample]
+    // POST http://localhost:8080/hello/request/form/model
+    // Header
+    //  Content type: application/x-www-form-urlencoded
+    // Body
+    //  name=Robbie&age=95
+    @PostMapping("/form/model")
+    @ResponseBody
+    public String helloRequestBodyForm(@ModelAttribute Star star) {
+        return String.format("Hello, @ModelAttribute.<br> (name = %s, age = %d) ", star.name, star.age);
 
+        //html body에 들어있는 내용을 객체로 처리하기
+        //@ModelAttribute 사용 (@ModelAttribute 객체)
+        //클래스로 받아온 데이터를 리턴해주기
+        //Setter 혹은 overloading 된 데이터가 필요함
+    }
+
+
+    // [Request sample]
+    // POST http://localhost:8080/hello/request/form/json
+    // Header
+    //  Content type: application/json
+    // Body
+    //  {"name":"Robbie","age":"95"}
+    @PostMapping("/form/json")
+    @ResponseBody
+    public String helloPostRequestJson(@RequestBody Star star) {
+        return String.format("Hello, @RequestBody.<br> (name = %s, age = %d) ", star.name, star.age);
+
+        //JSON To Object일 때는 @RequestBody를 써줘야함
+    }
 
 
 }
